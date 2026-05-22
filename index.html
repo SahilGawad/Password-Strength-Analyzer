@@ -12,14 +12,14 @@
   <div class="container">
     <h2>Password Strength Analyzer</h2>
 
-    <input 
-      type="password" 
-      id="password" 
-      placeholder="Enter Password"
-      onkeyup="checkPassword()"
-    >
-
-    <div class="strength-box">
+    <div class="input-box">
+  <input 
+  type="password" 
+  id="password" 
+  placeholder="Enter Your Password"
+  onkeyup="checkPassword()"
+>
+  <div class="strength-box">
       <div class="strength-bar" id="strengthBar"></div>
     </div>
 
@@ -28,86 +28,19 @@
     <ul id="suggestions"></ul>
   </div>
 
-  <script>
-    function checkPassword() {
+  <div class="suggest-box" id="suggestBox">
+  <p>Do you want a suggested strong password?</p>
 
-      let password = document.getElementById("password").value;
+  <div class="btn-group">
+    <button onclick="generatePassword()">Yes</button>
+    <button onclick="hideSuggestion()">No</button>
+  </div>
+  
+</div>
+</div>
+    
 
-      let strengthBar = document.getElementById("strengthBar");
-      let message = document.getElementById("message");
-      let suggestions = document.getElementById("suggestions");
 
-      let score = 0;
-      let tips = [];
-
-      // Length Check
-      if(password.length >= 8){
-        score++;
-      } else {
-        tips.push("Use at least 8 characters");
-      }
-
-      // Uppercase Check
-      if(/[A-Z]/.test(password)){
-        score++;
-      } else {
-        tips.push("Add uppercase letters");
-      }
-
-      // Lowercase Check
-      if(/[a-z]/.test(password)){
-        score++;
-      } else {
-        tips.push("Add lowercase letters");
-      }
-
-      // Number Check
-      if(/[0-9]/.test(password)){
-        score++;
-      } else {
-        tips.push("Add numbers");
-      }
-
-      // Special Character Check
-      if(/[!@#$%^&*]/.test(password)){
-        score++;
-      } else {
-        tips.push("Add special characters");
-      }
-
-      // Suggestions
-      suggestions.innerHTML = "";
-
-      tips.forEach(tip => {
-        suggestions.innerHTML += `<li>${tip}</li>`;
-      });
-
-      // Password Strength
-      if(score <= 2){
-        strengthBar.style.width = "33%";
-        strengthBar.style.background = "red";
-
-        message.innerHTML = "Weak Password";
-        message.style.color = "red";
-      }
-
-      else if(score <= 4){
-        strengthBar.style.width = "66%";
-        strengthBar.style.background = "orange";
-
-        message.innerHTML = "Medium Password";
-        message.style.color = "orange";
-      }
-
-      else{
-        strengthBar.style.width = "100%";
-        strengthBar.style.background = "green";
-
-        message.innerHTML = "Strong Password";
-        message.style.color = "green";
-      }
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
