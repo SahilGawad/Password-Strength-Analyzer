@@ -129,12 +129,24 @@ function generatePassword(){
 // Hide Suggestion Box
 function hideSuggestion(){
 
+  // Clear password input
+  document.getElementById("password").value = "";
+
+  // Reset strength bar
+  document.getElementById("strengthBar").style.width = "0%";
+
+  // Clear message
+  document.getElementById("message").innerHTML = "";
+
+  // Clear suggestions
+  document.getElementById("suggestions").innerHTML = "";
+
+  // Hide suggestion box
   document.getElementById("suggestBox").style.display = "none";
 
-  document.getElementById("generatedPassword").innerHTML =
-    "Okay! Try improving your password.";
+  // Reset input type
+  document.getElementById("password").type = "password";
 }
-
 function hidePassword(){
 
   let passwordInput = document.getElementById("password");
